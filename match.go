@@ -3,6 +3,8 @@ package match
 type anyType interface{}
 
 // GetCombination is a function for getcombination with multiple array
+// by me => inspird from http://stackoverflow.com/users/3447216/priyesh
+// http://stackoverflow.com/questions/22632826/combination-of-elements-of-multiple-arrays
 func getCombination(currentIndex int, containers [][]anyType) (combinations [][]anyType) {
 	if currentIndex == len(containers) {
 		// Skip the items for the last container
@@ -22,6 +24,7 @@ func getCombination(currentIndex int, containers [][]anyType) (combinations [][]
 	return combinations
 }
 
+// comboChain => Thanks for https://github.com/angch
 func comboChain(i [][]anyType) chan []anyType {
 	var channel chan []anyType
 	for _, j := range i {
@@ -57,6 +60,7 @@ func combo(input chan []anyType, stuff []anyType) chan []anyType {
 	return c
 }
 
+// combine => Thanks for this https://github.com/erikdubbelboer
 func combine(cb func([]anyType), inputs ...[]anyType) {
 	_combine(cb, len(inputs), inputs...)
 }
